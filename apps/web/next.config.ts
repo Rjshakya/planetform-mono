@@ -1,0 +1,13 @@
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  /* config options here */
+
+  images:{
+    remotePatterns:[new URL('https://bucket.planetform.xyz/**')]
+  }
+};
+
+import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
+initOpenNextCloudflareForDev();
+export default nextConfig;
