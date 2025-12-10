@@ -35,9 +35,6 @@ importers:
       '@hono/zod-validator':
         specifier: ^0.7.5
         version: 0.7.5(hono@4.10.7)(zod@4.1.13)
-      '@inboundemail/sdk':
-        specifier: ^4.4.0
-        version: 4.4.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@neondatabase/serverless':
         specifier: ^1.0.1
         version: 1.0.2
@@ -2114,13 +2111,6 @@ packages:
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [x64]
     os: [win32]
-
-  '@inboundemail/sdk@4.4.0':
-    resolution: {integrity: sha512-DChj0xIMeTZCgoTJ+iQm1r8JadqOj/5+EmGCK7pG9mtP2Q6mfG6OsCa8E4q/0nu4lTSrgl/OQdDHZzwWdcfA4g==}
-    engines: {node: '>=16.0.0'}
-    peerDependencies:
-      react: '>=16.8.0'
-      react-dom: '>=16.8.0'
 
   '@internationalized/date@3.10.0':
     resolution: {integrity: sha512-oxDR/NTEJ1k+UFVQElaNIk65E/Z83HK1z1WI3lQyhTtnNg4R5oVXaPzK3jcpKG8UHKDVuDQHzn+wsxSz8RP3aw==}
@@ -10062,11 +10052,6 @@ snapshots:
   '@img/sharp-win32-x64@0.34.5':
     optional: true
 
-  '@inboundemail/sdk@4.4.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
-    dependencies:
-      react: 19.2.0
-      react-dom: 19.2.0(react@19.2.0)
-
   '@internationalized/date@3.10.0':
     dependencies:
       '@swc/helpers': 0.5.15
@@ -16272,6 +16257,7 @@ snapshots:
     dependencies:
       react: 19.2.0
       scheduler: 0.27.0
+    optional: true
 
   react-hook-form@7.68.0(react@19.1.0):
     dependencies:
@@ -16428,7 +16414,8 @@ snapshots:
 
   react@19.1.0: {}
 
-  react@19.2.0: {}
+  react@19.2.0:
+    optional: true
 
   readdirp@4.1.2: {}
 
@@ -16578,7 +16565,8 @@ snapshots:
 
   scheduler@0.26.0: {}
 
-  scheduler@0.27.0: {}
+  scheduler@0.27.0:
+    optional: true
 
   seedrandom@3.0.5: {}
 
