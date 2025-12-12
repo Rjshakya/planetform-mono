@@ -1,9 +1,7 @@
 {
   "name": "planetform-server",
   "type": "module",
-  "exports": {
-    ".": "./src/hc.ts"
-  },
+  
   "scripts": {
     "dev": "wrangler dev --port 8000",
     "build": "tsc --noEmit",

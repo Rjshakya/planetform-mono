@@ -79,7 +79,8 @@ export const defaultEditorContent = {
       },
     },
   ],
-};
+  attrs:{}
+} as JsonDoc
 
 export const thankyouPageContent = {
   type: "pageBreak",

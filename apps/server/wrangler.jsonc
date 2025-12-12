@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "planetform-hono",
+  "name": "planetform-server",
   "main": "src/app.ts",
   "compatibility_flags": ["nodejs_compat"],
   "compatibility_date": "2025-10-11",

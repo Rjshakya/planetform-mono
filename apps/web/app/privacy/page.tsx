@@ -1,5 +1,5 @@
-import { Nav } from "../(marketing)/landing/_components/nav";
-import { Footer } from "../(marketing)/landing/_components/footer";
+import { Nav } from "../(marketing)/_components/nav";
+import { Footer } from "../(marketing)/_components/footer";
 import { Badge } from "@/components/ui/badge";
 import { Shield, Lock, Eye, FileCheck } from "lucide-react";
 
