@@ -45,7 +45,7 @@ export const IntegrationCard = ({
   };
   icon: JSX.Element;
 }) => {
-  const clientUrl = process.env.NEXT_PUBLIC_CLIENT_URL;
+  const clientUrl = process.env.NEXT_PUBLIC_CLIENT_URL as string
   const router = useRouter();
   const handleConnect = async () => {
     if (provider === "Google") {

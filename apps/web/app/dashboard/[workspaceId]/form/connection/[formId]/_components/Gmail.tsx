@@ -32,7 +32,7 @@ export const GmailNotifyIntegration = () => {
     from: " ",
     to: " ",
   });
-  const clientUrl = process.env.NEXT_PUBLIC_CLIENT_URL;
+  const clientUrl = process.env.NEXT_PUBLIC_CLIENT_URL as string
   const { formId, workspaceId } = useParams();
   const { user } = useUser();
   const router = useRouter();

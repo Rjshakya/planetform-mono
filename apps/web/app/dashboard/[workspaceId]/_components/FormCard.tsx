@@ -61,7 +61,7 @@ export default function FormCard(props: formProps) {
     toast(`${props.name} deleted!`);
     mutate(`/api/form/workspace/${workspace}`);
   };
-  const url = process.env.NEXT_PUBLIC_CLIENT_URL;
+  const url = process.env.NEXT_PUBLIC_CLIENT_URL as string
 
   return (
     <Item

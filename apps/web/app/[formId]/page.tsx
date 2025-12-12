@@ -20,7 +20,7 @@ import { Logo } from "@/components/Logo";
 import Link from "next/link";
 
 const fetcher = (url: string) => apiClient.get(url);
-const planetform = process.env.NEXT_PUBLIC_CLIENT_URL;
+const planetform = process.env.NEXT_PUBLIC_CLIENT_URL ?? "/"
 export default function Page() {
   const { formId } = useParams();
   const { data, isLoading, error } = useSWR(`/api/form/${formId}`, fetcher);

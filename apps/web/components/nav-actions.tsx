@@ -50,7 +50,7 @@ import {
 export function NavActions() {
   const [isOpen, setIsOpen] = React.useState(false);
   const { workspaceId, formId } = useParams();
-  const appUrl = process.env.NEXT_PUBLIC_CLIENT_URL;
+  const appUrl = process.env.NEXT_PUBLIC_CLIENT_URL as string
   const [isCopyied, setIsCopied] = React.useState(false);
   const { data: session } = authClient?.useSession();
   const path = usePathname();

@@ -5,8 +5,8 @@ import { toast } from "sonner";
 import { dodopaymentsClient } from "@dodopayments/better-auth";
 import { inferAdditionalFields } from "better-auth/client/plugins";
 
-const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
-const clientUrl = process.env.NEXT_PUBLIC_CLIENT_URL;
+const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL as string
+const clientUrl = process.env.NEXT_PUBLIC_CLIENT_URL as string
 
 export const authClient = createAuthClient({
   baseURL: baseUrl,
