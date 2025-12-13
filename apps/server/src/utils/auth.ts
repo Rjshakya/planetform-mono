@@ -12,13 +12,16 @@ import {
 import DodoPayments from "dodopayments";
 
 export const dodoPayments = new DodoPayments({
-  bearerToken: env.DODO_PAYMENTS_API_KEY ? env.DODO_PAYMENTS_API_KEY : 'My Bearer Token',
+  bearerToken: env.DODO_PAYMENTS_API_KEY
+    ? env.DODO_PAYMENTS_API_KEY
+    : "My Bearer Token",
   environment: "live_mode",
 });
 
 export const getAuth = async () => {
   const { FRONTEND_URL, TRUSED_DOMAIN } = env;
   const db = await getDb();
+
   return betterAuth({
     appName: "planetform",
     session: {
@@ -46,7 +49,6 @@ export const getAuth = async () => {
         dodoCustomerId: {
           type: "string",
           required: false,
-          defaultValue: "null",
         },
       },
     },
@@ -54,19 +56,18 @@ export const getAuth = async () => {
     socialProviders: {
       google: {
         prompt: "consent",
-        clientId: process.env.GOOGLE_CLIENT_ID!,
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+        clientId: env.GOOGLE_CLIENT_ID!,
+        clientSecret: env.GOOGLE_CLIENT_SECRET!,
         accessType: "offline",
         display: "popup",
-        
       },
       notion: {
-        clientId: process.env.NOTION_CLIENT_ID as string,
-        clientSecret: process.env.NOTION_CLIENT_SECRET as string,
+        clientId: env.NOTION_CLIENT_ID as string,
+        clientSecret: env.NOTION_CLIENT_SECRET as string,
       },
       slack: {
-        clientId: process.env.SLACK_CLIENT_ID,
-        clientSecret: process.env.SLACK_CLIENT_SECRET,
+        clientId: env.SLACK_CLIENT_ID,
+        clientSecret: env.SLACK_CLIENT_SECRET,
       },
     },
     plugins: [
@@ -81,12 +82,12 @@ export const getAuth = async () => {
                 slug: "Pro",
               },
             ],
-            successUrl: `${process.env.FRONTEND_URL}/dashboard`,
+            successUrl: `${FRONTEND_URL}/dashboard`,
             authenticatedUsersOnly: true,
           }),
           portal(),
           webhooks({
-            webhookKey: process.env.DODO_PAYMENTS_WEBHOOK_SECRET,
+            webhookKey: env.DODO_PAYMENTS_WEBHOOK_SECRET,
             onPayload: async (payload: any) => {
               console.log("Received webhook:", payload?.type);
             },
@@ -94,6 +95,25 @@ export const getAuth = async () => {
         ],
       }),
     ],
-
+    databaseHooks: {
+      user: {
+        create: {
+          async after(user, context) {
+            try {
+              await env.DODO_CUSTOMER_CREATE_WORK_FLOW.create({
+                id: user.id,
+                params: {
+                  email: user.email,
+                  name: user.name,
+                  userId: user.id,
+                },
+              });
+            } catch (e) {
+              console.log(e);
+            }
+          },
+        },
+      },
+    },
   });
 };

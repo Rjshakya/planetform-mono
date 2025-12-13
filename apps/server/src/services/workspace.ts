@@ -31,7 +31,7 @@ export const createWorkspaceService = async (
       }
     }
 
-    const workspace = await db
+    const [workspace] = await db
       .insert(workspaceTable)
       .values(workspaceValues)
       .returning({
@@ -40,7 +40,7 @@ export const createWorkspaceService = async (
         owner: workspaceTable.owner,
       });
 
-    return workspace[0];
+    return workspace
   } catch (e) {
     commonCatch(e);
   }
